@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/views/widgets/custom_textfeild.dart';
+import 'package:notes_app/views/widgets/custom_button.dart';
 
 class CustomizeSheet extends StatelessWidget {
   const CustomizeSheet({super.key});
@@ -11,13 +12,18 @@ class CustomizeSheet extends StatelessWidget {
       child: Container(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: const Column(
-            children: [
-              SizedBox(height: 32),
-              CustomTextfeild(hint: "title"),
-              SizedBox(height: 16),
-              CustomTextfeild(hint: "content", maxLines: 5),
-            ],
+          child: SingleChildScrollView(
+            child: const Column(
+              children: [
+                SizedBox(height: 32),
+                CustomTextfeild(hint: "title"),
+                SizedBox(height: 16),
+                CustomTextfeild(hint: "content", maxLines: 5),
+                SizedBox(height: 36),
+                CustomButton(),
+                SizedBox(height: 16),
+              ],
+            ),
           ),
         ),
       ),
