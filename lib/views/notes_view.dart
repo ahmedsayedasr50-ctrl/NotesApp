@@ -10,24 +10,28 @@ class NotesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          onPressed:
-              () {
-                showModalBottomSheet(
-                shape:RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)
-                ) ,
-                context: context,
-                builder: (context) {
-                  return CustomizeSheet();
-                },
-              );
-              },
-          child: Icon(Icons.add),
-        ),
+        onPressed: () {
+          showModalBottomSheet(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            context: context,
+            builder: (context) {
+              return CustomizeSheet();
+            },
+          );
+        },
+        child: Icon(Icons.add),
+      ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 24, horizontal: 8),
         margin: EdgeInsets.all(10),
-        child: Column(children: [CustomizeAppBar(), CreateListViewNoteItem()]),
+        child: Column(
+          children: [
+            CustomizeAppBar(title: "Notes", icon: Icons.search),
+            CreateListViewNoteItem(),
+          ],
+        ),
       ),
     );
   }
