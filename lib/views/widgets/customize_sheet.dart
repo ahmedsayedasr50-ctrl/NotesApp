@@ -8,12 +8,13 @@ class CustomizeSheet extends StatelessWidget {
   const CustomizeSheet({super.key});
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
+    return BlocProvider(
+      create: (context) => AddNotesCubit(),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
           child: BlocConsumer<AddNotesCubit, AddNotesState>(
             listener: (context, state) {
               if (state is AddNotesFailure) {
@@ -26,7 +27,7 @@ class CustomizeSheet extends StatelessWidget {
             builder: (context, state) {
               return ModalProgressHUD(
                 inAsyncCall: state is AddNotesLoading ? true : false,
-                child:const AddNoteform(),
+                child: const SingleChildScrollView(child: AddNoteform()),
               );
             },
           ),
